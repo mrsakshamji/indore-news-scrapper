@@ -9,7 +9,7 @@ This repository contains an automated news scraper that extracts the latest head
 You can access the live JSON output at:
 
 ```
-https://mrsakshamji.github.io/jagran-news-scraper/jagran-naidunia-indore-news.json
+[https://mrsakshamji.github.io/jagran-news-scraper/jagran-naidunia-indore-news.json](https://mrsakshamji.github.io/indore-news-scrapper/jagran-naidunia-indore-news.json)
 ```
 
 ---

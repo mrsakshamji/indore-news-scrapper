@@ -1,0 +1,36 @@
+name: Jagran News Scraper
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # Every 5 minutes (UTC time)
+  workflow_dispatch:         # Optional: manual trigger
+
+permissions:
+  contents: write            # ✅ REQUIRED: allow GitHub Actions to push commits
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python main.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git add jagran-naidunia-indore-news.json
+          git commit -m "Update Jagran articles [auto]" || echo "No changes to commit"
+          git push
